@@ -1,3 +1,12 @@
 body {
   font-family: sans-serif;
+  text-align: center;
+}
+
+form {
+  width: 50%;
+  gap: 0.5em;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
 }

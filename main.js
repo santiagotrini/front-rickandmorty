@@ -1,15 +1,19 @@
 const url = 'https://api-rickandmorty-llbq.onrender.com/api/characters';
 const container = document.querySelector('.container');
-fetch(url)
-  .then(res => res.json())
-  .then(data => {
-    for (let c of data) {
-      let p = document.createElement('p');
-      p.textContent = 'id: ' + c.id + ' name: ' + c.name;
-      container.append(p);
-    }
-  })
-  .catch(err => console.error(err));
+function updateList() {
+  fetch(url)
+    .then(res => res.json())
+    .then(results => {
+      for (let character of results) {
+        let p = document.createElement('p');
+        let { id, name, species } = character;
+        let show = { id, name, species }
+        p.textContent = JSON.stringify(show);
+        container.append(p);
+      }
+    })
+    .catch(err => console.error(err));
+}
 
 function handleSubmit(e) {
   e.preventDefault();
@@ -26,3 +30,4 @@ function handleSubmit(e) {
   f.reset();
 }
 
+updateList();
